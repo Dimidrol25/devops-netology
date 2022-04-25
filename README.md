@@ -1,6 +1,7 @@
 # devops-netology
 Domashnee Zadanie
 Modified
+1
 
 В папке /terraform будут проигнорированы следующие объекты:
 1. Локальная скрытая папка .terraform  с ее содержимым;
