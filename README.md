@@ -9,4 +9,7 @@ Modified
 4. Файлы с расширением .tfvars;
 5. Файлы override.tf, override.tf.json и файлы, содержащие в имени любые значения до _override.tf и до _override.tf.json;
 6. файлы .terraformrc и terraform.rc.
+
 Задание 3 - Ветки. П. 7
+
+Нашел как редактировать md в Pycharm
