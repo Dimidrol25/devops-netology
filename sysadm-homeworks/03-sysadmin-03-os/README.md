@@ -14,7 +14,7 @@
 Зомби-процессы не занимают ресурсы в ОС, но блокируют записи в таблице процессов, размер которой ограничен.  
 
 ### 5. В iovisor BCC есть утилита opensnoop:  
->root@vagrant:~# dpkg -L bpfcc-tools | grep sbin/opensnoop  
+>root@vagrant:# dpkg -L bpfcc-tools | grep sbin/opensnoop  
 >/usr/sbin/opensnoop-bpfcc  
 На какие файлы вы увидели вызовы группы open за первую секунду работы утилиты? Воспользуйтесь пакетом bpfcc-tools для Ubuntu 20.04. Дополнительные сведения по установке.  
 >root@vagrant:~# opensnoop-bpfcc  
