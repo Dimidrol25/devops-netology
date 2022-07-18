@@ -3,18 +3,18 @@
 ### 1. Работа c HTTP через телнет.  
 - Подключитесь утилитой телнет к сайту stackoverflow.com `telnet stackoverflow.com 80`  
 - отправьте HTTP запрос:  
-GET /questions HTTP/1.0
-HOST: stackoverflow.com
-[press enter]
-[press enter]
+> GET /questions HTTP/1.0  
+> HOST: stackoverflow.com  
+> [press enter]  
+> [press enter]  
 
 В ответе укажите полученный HTTP код, что он означает?  
 ![avatar](https://skrinshoter.ru/i/180722/haC767u9.png?download=1&name=%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82%2018-07-2022%2022:13:39.png)  
 Ответ на запрос означает, что настроено перманентное перенаправление на `https` и что ресурс существует, указаны настройки кэширования, безопасности, версия HTTP используется 1.1 и т.д.  
 
 ### 2. Повторите задание 1 в браузере, используя консоль разработчика F12.  
-- откройте вкладку Network  
-- отправьте запрос http://stackoverflow.com  
+- откройте вкладку `Network`  
+- отправьте запрос `http://stackoverflow.com`  
 - найдите первый ответ HTTP сервера, откройте вкладку Headers 
 > в первом ответе происходит 301 перенаправление на https, во втором ответе `Состояние 200 OK`    
 - укажите в ответе полученный HTTP код.  
@@ -1744,11 +1744,14 @@ Site design / logo &#169; 2022 Stack Exchange Inc; user contributions licensed u
     
     </body>
     </html>
-</details>
+</details>  
+
 - проверьте время загрузки страницы, какой запрос обрабатывался дольше всего?  
 > страница загрузилась за 646 мс (0.64 секунды), дольше всего длилось ожидание ответа - 152 мс  
 - приложите скриншот консоли браузера в ответ.  
+
 ![avatar](https://skrinshoter.ru/i/180722/G03GZ8g0.png?download=1&name=%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82%2018-07-2022%2022:52:16.png)  
+
 ### 3. Какой IP адрес у вас в интернете?  
 > vagrant@vagrant:/$ wget -qO- eth0.me  
 > 212.46.18.136  
@@ -1776,5 +1779,5 @@ Site design / logo &#169; 2022 Stack Exchange Inc; user contributions licensed u
 - `8.8.4.4`  
 
 ### 8. Проверьте PTR записи для IP адресов из задания 7. Какое доменное имя привязано к IP? воспользуйтесь утилитой `dig`  
-8.8.8.8.in-addr.arpa.  
-4.4.8.8.in-addr.arpa.  
+`8.8.8.8.in-addr.arpa.`  
+`4.4.8.8.in-addr.arpa.`  
