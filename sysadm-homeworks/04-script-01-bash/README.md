@@ -88,11 +88,9 @@ done
 ```bash
 while ((0 == 0))
 address=( 192.168.0.1 173.194.222.113 87.250.250.242 )
-#i=0
 do
 for ip in ${address[@]}
 do
-#               ((i++))
 (
         sleep 1;
         echo $'\e';
