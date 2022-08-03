@@ -98,35 +98,66 @@ vagrant@vagranttest:~$ ./py2.py
 ## Обязательная задача 4
 1. Наша команда разрабатывает несколько веб-сервисов, доступных по http. Мы точно знаем, что на их стенде нет никакой балансировки, кластеризации, за DNS прячется конкретный IP сервера, где установлен сервис. Проблема в том, что отдел, занимающийся нашей инфраструктурой очень часто меняет нам сервера, поэтому IP меняются примерно раз в неделю, при этом сервисы сохраняют за собой DNS имена. Это бы совсем никого не беспокоило, если бы несколько раз сервера не уезжали в такой сегмент сети нашей компании, который недоступен для разработчиков. Мы хотим написать скрипт, который опрашивает веб-сервисы, получает их IP, выводит информацию в стандартный вывод в виде: <URL сервиса> - <его IP>. Также, должна быть реализована возможность проверки текущего IP сервиса c его IP из предыдущей проверки. Если проверка будет провалена - оповестить об этом в стандартный вывод сообщением: [ERROR] <URL сервиса> IP mismatch: <старый IP> <Новый IP>. Будем считать, что наша разработка реализовала сервисы: `drive.google.com`, `mail.google.com`, `google.com`.
 
+ЭТО БЫЛО ПРЯМ СЛОЖНО......................  
+
 ### Ваш скрипт:
 ```python
 #!/usr/bin/env python3
 
 import socket
+import time
 
-web_services = ['drive.google.com', 'google.com', 'mail.google.com']
-ip_list1 = [' ', ' ', ' ']
-for i in range(0, 3):
-        ip_list1[i] = socket.gethostbyname(web_services[i])
+hosts = ['drive.google.com', 'google.com', 'mail.google.com']
 
-for i in range(0,3):
-        ip_list2 = [' ',' ', ' ']
-        ip_list2[i] = socket.gethostbyname(web_services[i])
-        if ip_list1[i] != ip_list2[i]:
-                print("ERROR", web_services[i], "IP missmatch", ip_list1[i], ip_list2[i])
+hosts1_dict = dict.fromkeys(hosts, '0')
+
+hosts2_dict = dict.fromkeys(hosts, '0')
+
+
+while 1==1:
+
+    for i in hosts2_dict.keys():
+        ip = socket.gethostbyname(i)
+        hosts2_dict[i] = ip
+    #    print(i, '-', ip)
+
+    for k,v in zip(hosts1_dict,hosts2_dict):
+        if hosts1_dict[v] == hosts2_dict[v]:
+            print(k, '-', hosts2_dict[v])
         else:
-                print(web_services[i], "-", ip_list2[i])
+            print("ERROR", k, "IP missmatch", hosts1_dict[v], hosts2_dict[v])
+
+    hosts1_dict.update(hosts2_dict)
+    time.sleep(5)
 ```
 
 ### Вывод скрипта при запуске при тестировании:
-```
-vagrant@vagranttest:~$ ./py3.py  
-drive.google.com - 173.194.73.194  
-ERROR google.com IP missmatch 173.194.73.113 173.194.73.102  
-ERROR mail.google.com IP missmatch 173.194.222.19 173.194.222.83
+````
+vagrant@vagranttest:~$ ./py3_2.py
+ERROR drive.google.com IP missmatch 0 74.125.131.194
+ERROR google.com IP missmatch 0 142.251.1.102
+ERROR mail.google.com IP missmatch 0 74.125.131.18
+drive.google.com - 74.125.131.194
+ERROR google.com IP missmatch 142.251.1.102 142.251.1.100
+ERROR mail.google.com IP missmatch 74.125.131.18 74.125.131.17
+drive.google.com - 74.125.131.194
+google.com - 142.251.1.100
+mail.google.com - 74.125.131.17
+drive.google.com - 74.125.131.194
+google.com - 142.251.1.100
+mail.google.com - 74.125.131.17
+drive.google.com - 74.125.131.194
+google.com - 142.251.1.100
+mail.google.com - 74.125.131.17
+drive.google.com - 74.125.131.194
+google.com - 142.251.1.100
+mail.google.com - 74.125.131.17
+drive.google.com - 74.125.131.194
+ERROR google.com IP missmatch 142.251.1.100 142.251.1.139
+mail.google.com - 74.125.131.17
+^CTraceback (most recent call last):
+  File "./py3_2.py", line 27, in <module>
+    time.sleep(5)
+KeyboardInterrupt
 
-vagrant@vagranttest:~$ ./py3.py  
-drive.google.com - 173.194.73.194  
-google.com - 173.194.73.102  
-mail.google.com - 173.194.222.83  
 ```
