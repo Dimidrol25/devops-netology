@@ -9,8 +9,8 @@ backend "s3" {
     bucket     = "netology-s3"
     region     = "ru-central1-a"
     key        = "terraform.tfstate"
-    access_key = "YCAJEUAFqUIjSgh3b4E8ghIB3"
-    secret_key = "YCM5q-Ltb0EzaAgyHnFElKGse255hXwXsmA2rWqI"
+    access_key = "XXXXXXXXXXXXXXXXXXXXX"
+    secret_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
     skip_region_validation      = true
     skip_credentials_validation = true
