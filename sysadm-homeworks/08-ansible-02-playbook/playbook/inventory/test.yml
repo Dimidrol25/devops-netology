@@ -1,0 +1,10 @@
+---
+  elasticsearch:
+    hosts:
+      centos-el:
+        ansible_connection: docker
+  kibana:
+    hosts:
+      centos-rb:
+        ansible_connection: docker
+
