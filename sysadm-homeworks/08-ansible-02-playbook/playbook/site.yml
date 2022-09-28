@@ -40,7 +40,7 @@
   tasks:
     - name: Upload tar.gz Elasticsearch from remote URL
       get_url:
-        url: "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz"
+        url: "https://github.com/elastic/elasticsearch/archive/refs/tags/v{{ elastic_version }}.tar.gz"
         dest: "/tmp/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz"
         mode: 0755
         timeout: 60
@@ -75,7 +75,7 @@
   tasks:
     - name: Upload tar.gz kibana from remote URL
       get_url:
-        url: "https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-linux-x86_64.tar.gz"
+        url: "https://github.com/elastic/kibana/archive/refs/tags/v{{ kibana_version }}.tar.gz"
         dest: "/tmp/kibana-{{ kibana_version }}-linux-x86_64.tar.gz"
         mode: 0755
         timeout: 60
