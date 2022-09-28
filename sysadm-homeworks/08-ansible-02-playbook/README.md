@@ -76,7 +76,7 @@ kibana:
 ![avatar](https://skrinshoter.ru/i/280922/eIrPBRQ7.png?download=1&name=%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82%2028-09-2022%2015:09:00.png)
 
 8. Повторно запустите playbook с флагом --diff и убедитесь, что playbook идемпотентен.  
-![avatar]https://skrinshoter.ru/i/280922/rkcA0F9E.png?download=1&name=%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82%2028-09-2022%2015:14:36.png
+![avatar](https://skrinshoter.ru/i/280922/rkcA0F9E.png?download=1&name=%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82%2028-09-2022%2015:14:36.png)
 
 `playbook` идемпотентен.
 
